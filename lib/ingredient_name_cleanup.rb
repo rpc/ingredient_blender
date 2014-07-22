@@ -5,6 +5,7 @@
 # * > Removes Conjunction words: "de", "com", "of"
 # * > Removes Hifens (e.g.: "-")
 # * > Removes Whitespaces
+# * > Removes Non Alphanumeric Characters
 # ***********************************************
 
 class IngredientNameCleanup
@@ -19,6 +20,9 @@ class IngredientNameCleanup
 
 	def cleanup
 		unless @clean_ingredient_name.empty?
+	 		# Removes Non-Alphanumeric Characters
+	    @clean_ingredient_name = filter_non_alphanumeric_characters @clean_ingredient_name
+
 	 		# Removes hifen "-"
 	 		@clean_ingredient_name = filter_hifens @clean_ingredient_name
 
@@ -29,6 +33,10 @@ class IngredientNameCleanup
 	end
 
 	private
+	def filter_non_alphanumeric_characters ingredient_name
+		ingredient_name.gsub(/[^0-9a-z\- ]/i, '')
+	end
+
 	def filter_hifens ingredient_name
 		ingredient_name.gsub("-"," ").split(" ").join(" ")
 	end

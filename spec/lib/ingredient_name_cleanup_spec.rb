@@ -30,6 +30,15 @@ describe IngredientNameCleanup  do
 				expect(cleanup_ingredient(ingredient.full_name)).to eq('2 cups tea')
 			end
 		end
+
+		# Conjunctions words examples are: "of" "de" "com"
+		describe "removes non alphanumeric characters" do
+			it "should remove conjuntion words" do
+				ingredient = Ingredient.new("2 cups of-eggs *++ ")
+				expect(cleanup_ingredient(ingredient.full_name)).to eq('2 cups eggs')
+			end
+		end
+
 	end
 
 	private
