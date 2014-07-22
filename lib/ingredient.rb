@@ -1,7 +1,7 @@
 class Ingredient
 
 	attr_accessor :quantity, :measure, :name
-	attr_accessor :original_name
+	attr_accessor :full_name
 
 	attr_accessor :ingredient
 
@@ -16,7 +16,7 @@ class Ingredient
   					 "ounce"]	
 
 	def initialize(ingredient_as_string)
-		self.original_name = ingredient_as_string
+		@full_name = ingredient_as_string
 		@ingredient = ingredient
 	end
 

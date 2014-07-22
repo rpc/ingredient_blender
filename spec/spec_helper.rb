@@ -4,7 +4,7 @@
 # loaded once.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
-require "ingredient_cleanup"
+require "ingredient_name_cleanup"
 require "ingredient"
 
 RSpec.configure do |config|
